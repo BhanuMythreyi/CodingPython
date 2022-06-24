@@ -1,0 +1,16 @@
+136. Single Number
+
+XOR approach is used
+a^a = 0
+a^0 = a
+a^b = b^a
+
+Given array contains numbers, All the numbers will be repeated twice and only 1 single number will be only once. Find that number
+hence the approach is : a^b^a^c^b so answer = c; as a^a=0 and b^b =0 and then c^0 =c
+Code:
+class Solution:
+    def singleNumber(self, nums: List[int]) -> int:
+        ans = 0
+        for num in nums:
+            ans = ans^num
+        return ans
