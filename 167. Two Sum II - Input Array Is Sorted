@@ -1,0 +1,25 @@
+167. Two Sum II - Input Array Is Sorted
+
+Given a target and list of numbers, find two numbers such that they sum up to the target
+return the indexes+1 of the two numbers, i.e. return [index(num1)+1,index(num2)+1]
+Approach:
+Two pointers
+First pointer at the start index and the Second pointer at the last
+Since the given array is sorted if the target<arr[first]+arr[last]; then the value must be increased so the first pointer is increased i.e. +1 so that the next value will be greater than the previous oneand similarly if the sum exceeds target then the second pointer is decremented
+Code:
+class Solution:
+    def twoSum(self, numbers: List[int], target: int) -> List[int]:
+        first = 0
+        last = len(numbers)-1
+        ans = []
+        while first<last:
+            CurrentSum = numbers[first]+numbers[last]
+            if CurrentSum<target:
+                first += 1
+            elif CurrentSum>target:
+                last -= 1
+            else:
+                ans.append(first+1)
+                ans.append(last+1)
+                break
+        return ans
