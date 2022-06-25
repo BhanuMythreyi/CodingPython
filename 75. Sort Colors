@@ -1,0 +1,33 @@
+75. Sort Colors
+
+Just sort the numbers in the array
+
+Bubble sort ---------- 75 ms(Run time)
+Code :
+class Solution:
+    def sortColors(self, nums: List[int]) -> None:
+        """
+        Do not return anything, modify nums in-place instead.
+        """
+        count = 0
+        while count<len(nums):
+            for i in range(len(nums)-1):
+                if nums[i] >nums[i+1]:
+                    nums[i],nums[i+1] = nums[i+1],nums[i]
+            count += 1
+            
+Selection Sort ----------- 51 ms(Run Time)
+Code:
+class Solution:
+    def sortColors(self, nums: List[int]) -> None:
+        """
+        Do not return anything, modify nums in-place instead.
+        """
+        for i in range(len(nums)-1):
+            mini = nums[i]
+            for j in range(i+1,len(nums)):
+                if nums[j]<mini:
+                    mini = nums[j]
+            minindex = nums.index(mini,i)
+            if nums[i] != nums[minindex]:
+                nums[i],nums[minindex] = nums[minindex],nums[i]
