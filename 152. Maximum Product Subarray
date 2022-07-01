@@ -1,0 +1,25 @@
+152. Maximum Product Subarray
+
+class Solution:
+    def maxProduct(self, nums: List[int]) -> int:
+        maxi = 0
+        currProd = 1
+        if (len(nums)==1):
+            return nums[0]
+        
+        for i in range(len(nums)):
+            if nums[i] != 0:
+                currProd = nums[i]*currProd
+                maxi = max(maxi,currProd)
+            else:
+                currProd = 1
+            
+        currProd = 1 #as the maximum value is already stored in maxi in the above loop we can assign it to 1 now so that we can perform next operations hastle free
+        for i in range(len(nums)-1,-1,-1):
+            if nums[i] != 0:
+                currProd = currProd*nums[i]
+                maxi = max(maxi,currProd)
+            else:
+                currProd = 1
+        
+        return maxi
