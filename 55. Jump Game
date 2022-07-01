@@ -1,2 +1,19 @@
 55. Jump Game
 
+
+class Solution:
+    def canJump(self, nums: List[int]) -> bool:
+        maxReachable = nums[0]
+        i = 1
+        while(i<len(nums) and maxReachable>=i): # In this case, the variable "i" is compared with length of array and not the value of the number i.e. maxReachable 
+                                                # because whatever the value of maxReachable is we can hop/jump only until the length of the array permits so we took the 
+                                                # upper limit of "i" as len(nums), and the next condition is it must be greater than maxReachable so that it can e updated
+                                                # in the loop
+            if(nums[i]+i>maxReachable):
+                maxReachable = nums[i]+i
+            i += 1
+            
+        if (maxReachable >= len(nums)-1):
+            return True
+        else:
+            return False
