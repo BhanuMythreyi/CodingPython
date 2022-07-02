@@ -1,0 +1,33 @@
+GFG-Sort an array of 0s, 1s and 2s
+
+Just modify the array, do not return anything and also do not create another array
+
+BruteForce:
+
+class Solution:
+    def sort012(self,arr,n):
+        # zeroes = arr.count(0)
+        # ones = arr.count(1)
+        # twos = arr.count(2)
+        zeroes = 0
+        ones = 0
+        twos = 0
+        for a in range(n):
+            if arr[a] == 0:
+                zeroes += 1
+            elif arr[a] == 1:
+                ones += 1
+            elif arr[a] == 2:
+                twos += 1
+
+        for i in range(zeroes):
+            arr[i] = 0
+        for j in range(zeroes,zeroes+ones):
+            arr[j] = 1
+        for k in range(zeroes+ones,n):
+            arr[k] = 2
+            
+Optimized:
+Using Three pointer:low,mid and high; Low corresponding to zero and high correcponding to 2; m is used for swapping the elements. If m encounters 0 the value where is present will be swapped with the value where l is present and ifm encounters 2 then it will be swapped with the value at h
+
+
