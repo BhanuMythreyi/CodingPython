@@ -1,0 +1,14 @@
+238. Product of Array Except Self
+
+class Solution:
+    def productExceptSelf(self, nums: List[int]) -> List[int]:
+        answer = [1]
+        for i in range(len(nums)-1,0,-1):
+            answer.append(answer[-1]*nums[i])
+        answer = answer[::-1]
+        left = 1
+        for i in range(len(nums)):
+            answer[i] = left*answer[i]
+            left *= nums[i]
+            
+        return answer
