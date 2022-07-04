@@ -1,0 +1,13 @@
+169. Majority Element
+
+BruteForce:
+Use a sorting algo and then find the middle index since the maximum repeated element will be more than n/2 hence it must be at middle. But the Time Limit Exceeded even if we apply merge sort hence it is not preffered. The below show code may not be used as we used sort() function available in library
+
+class Solution:
+    def majorityElement(self, nums: List[int]) -> int:
+        nums.sort()
+        mid = (len(nums)-1)//2
+        return nums[mid]
+        
+Another Approach:
+hash map approach
