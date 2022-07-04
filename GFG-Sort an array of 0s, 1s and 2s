@@ -30,7 +30,7 @@ class Solution:
 Optimized:
 Using Three pointer:low,mid and high; Low corresponding to zero and high correcponding to 2; m is used for swapping the elements. If m encounters 0 the value where is present will be swapped with the value where l is present and ifm encounters 2 then it will be swapped with the value at h
 class Solution:
-    def sortColors(self, nums: List[int]) -> None:
+    def sort012(self, nums: List[int]) -> None:
         """
         Do not return anything, modify nums in-place instead.
         """
