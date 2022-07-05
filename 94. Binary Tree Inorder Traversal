@@ -1,5 +1,8 @@
 94. Binary Tree Inorder Traversal
 
+
+Recursive Approach:
+
 # Definition for a binary tree node.
 # class TreeNode:
 #     def __init__(self, val=0, left=None, right=None):
@@ -11,9 +14,14 @@ class Solution:
         self.ans = []
         self.Inorder(root)
         return self.ans
-    
+    # Resursive Approach
     def Inorder(self,root):
-        if root is not None:
-            self.Inorder(root.left)
-            self.ans.append(root.val)
-            self.Inorder(root.right)
+        if not root:
+            return
+        self.Inorder(root.left)
+        self.ans.append(root.val)
+        self.Inorder(root.right)
+        
+Iterative Approach:
+
+In this approach each time traverse and read the value of a node we store it in stack and proceed forward until we reach None and as soon as we reach None we will return back popping out all the elements of stack
