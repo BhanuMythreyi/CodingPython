@@ -1,0 +1,37 @@
+155. Min Stack
+
+class MinStack:
+
+    def __init__(self):
+        self.arr = []
+        self.minstack = [] # only to find the minimum element this stack is used
+        
+
+    def push(self, val: int) -> None:
+        self.arr.append(val)
+        if (len(self.minstack) == 0 or self.minstack[-1]>=val):
+            self.minstack.append(val)
+
+    def pop(self) -> None:
+        if len(self.arr)>0:
+            if (self.arr[-1] == self.minstack[-1]):
+                self.minstack.pop()
+            self.arr.pop() # Here instead of arr.pop() or minstack.pop() if we use arr.remove(arr[-1]) or minstack.remove(minstack[-1]) we get error for some test                                # cases
+        else:
+            return None
+
+    def top(self) -> int:
+        return self.arr[-1]
+        
+
+    def getMin(self) -> int:
+        return self.minstack[-1]
+        
+
+
+# Your MinStack object will be instantiated and called as such:
+# obj = MinStack()
+# obj.push(val)
+# obj.pop()
+# param_3 = obj.top()
+# param_4 = obj.getMin()
