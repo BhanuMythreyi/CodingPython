@@ -1,0 +1,58 @@
+744. Find Smallest Letter Greater Than Target
+
+Used BinarySearch by converting the characters into it's respective ascii value and after processing the ascii value is converted back into character and the answer is returned; My Initial approach which took 286ms but it worked:
+
+class Solution:
+    def nextGreatestLetter(self, letters: List[str], target: str) -> str:
+        p = []
+        for i in letters:
+            p.append(ord(i))
+        targ = ord(target)
+        store = self.BinarySearch(p,targ)
+        return chr(store)
+        
+    def BinarySearch(self,p,targ):
+        s = set(p)
+        p = list(s)
+        p.sort()
+        l = 0
+        h = len(p)-1
+        if (l==0 and h == 0) or p[0]>targ:
+            return p[0]
+        while(l<=h):
+            mid = (l+h)//2
+            if targ>p[mid]:
+                l = mid+1
+            elif targ<p[mid]:
+                h = mid-1
+            else:
+                d = mid+1
+                if d >= len(p):
+                    diff = len(p)-(mid+1)
+                    d = diff%len(p)
+                return p[d]
+        return p[(l%len(p))]
+        
+  Second Approach which took less time than the previous solution i.e. 195 ms: we don't have to convert into ascii values, it can be solved generally too:
+  class Solution:
+    def nextGreatestLetter(self, letters: List[str], target: str) -> str:
+        s = set(letters)
+        letters = list(s)
+        letters.sort()
+        res = letters[0]
+        l= 0
+        h = len(letters)-1
+        while(l<=h):
+            mid = (l+h)//2
+            if target>letters[mid]:
+                l = mid+1
+            elif target<letters[mid]:
+                h = mid-1
+            else:
+                d = mid+1
+                if d >= len(letters):
+                    diff = len(letters)-(mid+1)
+                    d = diff%len(letters)
+                return letters[d]
+        return letters[(l%len(letters))]
+  
