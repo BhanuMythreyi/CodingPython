@@ -1,0 +1,30 @@
+378. Kth Smallest Element in a Sorted Matrix
+
+Using 1D array i.e. extra space of O(n) and to do that time complexity is extra of O(n^2)
+BruteForce Approach-1:
+
+class Solution:
+    def kthSmallest(self, matrix: List[List[int]], k: int) -> int:
+        arr = []
+        for i in matrix:
+            for j in i:
+                arr.append(j)
+        arr.sort() # Given that the list is sorted so no need to sort it again but this condition got violated in a test case i.e. the elements order is 1,2,1,3; where in the lst is not sorted an hence to satisfy that consider i used .sort() function
+        
+        while (len(arr)>k):
+            arr.pop()
+        return arr[len(arr)-1]
+        
+BruteForce-2:
+class Solution:
+    def kthSmallest(self, matrix: List[List[int]], k: int) -> int:
+        arr = []
+        for i in matrix:
+            for j in i:
+                arr.append(j)
+        arr.sort()
+        
+        return arr[k-1]
+        
+Optimized Approach:
+Can be implemented using BinarySearch
