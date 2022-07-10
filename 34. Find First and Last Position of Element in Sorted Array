@@ -1,0 +1,37 @@
+34. Find First and Last Position of Element in Sorted Array
+
+#USing BinarySearch
+
+class Solution:
+    def searchRange(self, nums: List[int], target: int) -> List[int]:
+        left = self.findLeft(nums,target)
+        right = self.findRight(nums,target)
+        return [left,right]
+    def findLeft(self,nums,target):
+        l = 0
+        h = len(nums)-1
+        ans = -1
+        while (l<=h):
+            mid = (l+h)//2
+            if (target>nums[mid]):
+                l = mid+1
+            elif (target<nums[mid]):
+                h = mid-1
+            else:
+                ans = mid
+                h = mid-1
+        return ans
+    def findRight(self,nums,target):
+        l = 0
+        h = len(nums)-1
+        ans = -1
+        while (l<=h):
+            mid = (l+h)//2
+            if (target>nums[mid]):
+                l = mid+1
+            elif (target<nums[mid]):
+                h = mid-1
+            else:
+                ans = mid
+                l = mid+1
+        return ans
