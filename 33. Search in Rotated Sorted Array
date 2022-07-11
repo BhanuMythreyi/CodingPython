@@ -1,0 +1,28 @@
+33. Search in Rotated Sorted Array
+
+class Solution:
+    def search(self, nums: List[int], target: int) -> int:
+        l = 0
+        h = len(nums)-1
+        ans = -1
+        
+        while (l<=h):
+            mid = (l+h)//2
+            # target in original and mid in rotated so we move the mid towards original sub array
+            if (nums[mid]>=nums[0] and target<nums[0]):
+                l = mid+1
+                
+            # target in rotated and mid in original then move mid index to left
+            elif (nums[mid]<nums[0] and target>=nums[0]):
+                h = mid-1
+                
+            # (target in rotated and mid in rotated) or (target in original and mid in original) then we use normal binary search
+            else:
+                if (target>nums[mid]):
+                    l = mid+1
+                elif (target<nums[mid]):
+                    h = mid-1
+                else:
+                    ans = mid
+                    break
+        return ans 
