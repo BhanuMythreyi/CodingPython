@@ -1,0 +1,13 @@
+322. Coin Change
+
+# Greedy Approach(Always choosing the coin with highest value and so on) did not work tried though
+
+example to prove the above point
+arr = [1,9,16] and target = 18
+In Greedy we get 16+1+1 i.e. total number of coins = 3
+instead of that if we chose 9+9 i.e. total number of coins = 2
+So Greedy doesn't work always
+
+
+So Use DP:Dynamic Programming / Optimization
+
