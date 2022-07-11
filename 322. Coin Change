@@ -8,6 +8,42 @@ In Greedy we get 16+1+1 i.e. total number of coins = 3
 instead of that if we chose 9+9 i.e. total number of coins = 2
 So Greedy doesn't work always
 
-
+# The below code doesn't produce right output in this case
+class Solution:
+    def coinChange(self, coins: List[int], amount: int) -> int:
+        count = 0
+        coins.sort()
+        for i in range(len(coins)-1,-1,-1):
+            while (amount>=coins[i]):
+                amount = amount-coins[i]
+                print(coins[i])
+                count += 1
+        if amount == 0:
+            return count
+        else:
+            return -1
+            
+            
 So Use DP:Dynamic Programming / Optimization
 
+class Solution:
+    def coinChange(self, coins: List[int], amount: int) -> int:
+        self.dp = {}
+        self.coins = coins
+        return self.f(amount)
+    
+    def f(self,amount):
+        if(amount<=0):
+            return 0
+        else:
+            ans = -1
+            if (amount in self.dp):
+                return self.dp[amount]
+            else:
+                for coin in self.coins:
+                    if (coin<=amount):
+                        val = self.f(amount-coin)
+                        if (val != -1 and (ans == -1 or val+1 < ans)):
+                            ans = val+1
+                self.dp[amount] = ans
+                return ans
