@@ -1,5 +1,65 @@
 33. Search in Rotated Sorted Array
 
+
+My Approach: Divide into 2 arrays and solve
+class Solution:
+    def search(self, nums: List[int], target: int) -> int:
+        
+        # Check if the nums is empty
+        if len(nums)<1:
+            return -1
+        # We will try to find at what index the roatetd part ends and at what indx the original part begins 
+        store = self.divider(nums)
+        
+        # If we do not have any rotated part then the default valuegiven is -100 and then we perform only one binary search
+        if store == -100:
+            Ans = self.BinarySearch(nums,target)
+            return Ans
+        
+        # We divided the original array into two arrays based on the index that's found
+        rotated = nums[:store+1]
+        original = nums[store+1:]
+        rotAns = self.BinarySearch(rotated,target)
+        orgAns = self.BinarySearch(original,target)
+        
+        # Since the index of the element that is present in the original order list must be give in terms of nums, we try to add the length of the rotated array to the index. But if it is -1, then it signifies that the element is not present in original part thus we do not have to add length of rotated array
+        if orgAns != -1:
+            orgAns = orgAns+len(rotated)
+        return max(rotAns,orgAns)
+        
+    # The below method divides the original array into two parts rotated and original. At times we might not have a rotated array and we can have only a single array for example [1,3] where in we have to perform binary search only on one aray if that's the case or else we perform binary search on two diff arrays namely rotated and original
+    def divider(self,nums):
+        flag = 0
+        store = -100
+        for i in range(len(nums)-1):
+            if nums[i]>nums[i+1]:
+                flag = 1
+                store = i
+        return store
+            
+    def BinarySearch(self,arr,target):
+        l = 0
+        h = len(arr)-1
+        ans = -1
+        if l == h:
+            if arr[0] == target:
+                return 0
+            else:
+                return -1
+        while(l<=h):
+            mid = (l+h)//2
+            if (target>arr[mid]):
+                l = mid+1
+            elif (target<arr[mid]):
+                h = mid-1
+            else:
+                ans = mid
+                return ans
+        return ans
+
+
+A Better Approach: DO not use extra space and it can be solved without two arrays, by using the given aray it self
+
 class Solution:
     def search(self, nums: List[int], target: int) -> int:
         l = 0
