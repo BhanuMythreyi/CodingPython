@@ -1,2 +1,25 @@
 494. Target Sum
 
+class Solution:
+    def findTargetSumWays(self, nums: List[int], target: int) -> int:
+        # We must find the number of possibilities so we use DP to check all the possibilities in the tree
+        self.nums = nums
+        self.ht = {}
+        
+        return self.f(0,target)
+        
+        
+    def f(self,i,currtotal):
+        if (i<len(self.nums)-1):
+            key = (i,currtotal)
+            if (key in self.ht):
+                return self.ht[key]
+            self.ht[key] = self.f(i+1,currtotal - self.nums[i]) + self.f(i+1,currtotal + self.nums[i])
+            return self.ht[key]
+        else:
+            if (currtotal == 0 and self.nums[i] == 0):
+                return 2
+            elif (abs(currtotal) == abs(self.nums[i])):
+                return 1
+            else:
+                return 0
