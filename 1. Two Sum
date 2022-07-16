@@ -1,0 +1,13 @@
+1. Two Sum
+
+class Solution:
+    def twoSum(self, nums: List[int], target: int) -> List[int]:
+        hashMap = {}
+        
+        for i,n in enumerate(nums):
+            diff = target-n
+            if diff in hashMap:
+                return [hashMap[diff],i]
+            hashMap[n] = i
+        return
+# In the last line we dont have to return anything actually since it is provided that such pair exists for sure
