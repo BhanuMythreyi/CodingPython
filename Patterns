@@ -4,7 +4,7 @@ Patterns
 Rows: Outer Loops
 Columns: Inner Loops
 
-
+# For printing "*" or any unique character in most of the cases only one single loop will be sufficient. If we are supposed to print different elements like different numbers or different characters we se two loops where one loop determines rows and the other loop represents columns
 Q1)
 
 1 2 3 4
@@ -216,8 +216,237 @@ def Q11Pattern(n):
     print(" "*(n-i)+"* "*i)
 Q11Pattern(5)
 
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Q12)
+
+1
+1 2
+1 2 3
+1 2 3 4
+1 2 3 4 5
+
+def Q12Pattern(n):
+  for i in range(1,n+1):
+    for j in range(1,i+1):
+      print(j,end=" ")
+    print()
+Q12Pattern(5)
+                                                                          (OR)
+def Q12Pattern(n):
+  for i in range(n):
+    for j in range(i+1):
+      print(j+1,end=" ")
+    print()
+Q12Pattern(5)
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Q13)
+
+1
+1 2
+1 2 3
+1 2 3 4
+1 2 3 4 5
+
+def Q13Pattern(n):
+  for i in range(1,n+1):
+    for j in range(i,0,-1):
+      print(j,end=" ")
+    print()
+Q13Pattern(5)
 
 
+-------Invertion-------------
+
+        1
+      1 2
+    1 2 3
+  1 2 3 4
+1 2 3 4 5
+
+def InvQ13Pattern(n):
+  for i in range(1,n+1):
+    for j in range(1,n-i+1):
+      print(" ",end = " ")
+    for j in range(1,i+1):
+      print(j,end=" ")
+    print()
+InvQ13Pattern(5)
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Q14)
+
+1
+2 2
+3 3 3
+4 4 4 4
+5 5 5 5 5
+
+def Q14Pattern(n):
+  for i in range(1,n+1):
+    for j in range(1,i+1):
+      print(i,end=" ")
+    print()
+Q14Pattern(5)
+
+------- Inversion --------
 
 
+        1
+      2 2
+    3 3 3
+  4 4 4 4
+5 5 5 5 5
 
+def InvQ14Pattern(n):
+  for i in range(1,n+1):
+    for j in range(0,n-i):
+      print(" ",end = " ")
+    for j in range(1,i+1):
+      print(i,end=" ")
+    print()
+InvQ14Pattern(5)
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Q15)
+
+5
+4 4
+3 3 3
+2 2 2 2
+1 1 1 1 1
+
+def Q15Pattern(n):
+  for i in range(1,n+1):
+    for j in range(1,i+1):
+      print(n-i+1,end=" ")
+    print()
+Q15Pattern(5)
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Q16)
+
+5
+5 4
+5 4 3
+5 4 3 2
+5 4 3 2 1
+
+def Q16Pattern(n):
+  for i in range(1,n+1):
+    for j in range(1,i+1):
+      print(n-j+1,end=" ")
+    print()
+Q16Pattern(5)
+
+-------- Inversion ------------
+
+        5
+      4 4
+    3 3 3
+  2 2 2 2
+1 1 1 1 1
+
+def InvQ16Pattern(n):
+  for i in range(1,n+1):
+    for j in range(0,n-i):
+      print(" ",end = " ")
+    for j in range(1,i+1):
+      print(n-i+1,end=" ")
+    print()
+InvQ16Pattern(5)
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Q17)
+
+5
+4 5
+3 4 5
+2 3 4 5
+1 2 3 4 5
+
+def Q17Pattern(n):
+  for i in range(n,0,-1):
+    for j in range(0,n-i+1):
+      print(i+j,end=" ")
+    print()
+Q17Pattern(5)
+
+--------- Inversion -------------
+
+        5
+      4 5
+    3 4 5
+  2 3 4 5
+1 2 3 4 5
+
+def InvQ17Pattern(n):
+  for i in range(n,0,-1):
+    for j in range(1,i):
+      print(" ",end=" ")
+    for j in range(0,n-i+1):
+      print(i+j,end=" ")
+    print()
+InvQ17Pattern(5)
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Q18)
+
+
+1
+2 1
+3 2 1
+4 3 2 1
+5 4 3 2 1
+
+def Q18Pattern(n):
+  for i in range(1,n+1):
+    for j in range(i,0,-1):
+      print(j,end=" ")
+    print()
+Q18Pattern(5)
+
+----------- Inversion ----------------
+        1
+      2 1
+    3 2 1
+  4 3 2 1
+5 4 3 2 1
+
+def InvQ18Pattern(n):
+  for i in range(1,n+1):
+    for j in range(1,n-i+1):
+      print(" ",end = " ")
+    for j in range(i,0,-1):
+      print(j,end=" ")
+    print()
+InvQ18Pattern(5)
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Q19)
+
+5
+5 4
+5 4 3
+5 4 3 2
+5 4 3 2 1
+
+def Q19Pattern(n):
+  for i in range(n):
+    for j in range(n,n-i-1,-1):
+      print(j,end=" ")
+    print()
+Q19Pattern(5)
+
+---------- Inversion ------------
+
+        5
+      5 4
+    5 4 3
+  5 4 3 2
+5 4 3 2 1
+
+def InvQ19Pattern(n):
+  for i in range(n):
+    for j in range(1,n-i+1):
+      print(" ",end = " ")
+    for j in range(n,n-i-1,-1):
+      print(j,end=" ")
+    print()
+InvQ19Pattern(5)
