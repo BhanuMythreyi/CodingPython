@@ -1,0 +1,47 @@
+287. Find the Duplicate Number
+
+Brute Force 1:
+USing extra space O(n):create a hashmap
+class Solution:
+    def findDuplicate(self, nums: List[int]) -> int:
+        hashmap = {}
+        
+        for i in nums:
+            if i in hashmap:
+                return i
+            else:
+                hashmap[i] = 1
+                
+  
+ Similarly even a set can be used:
+ class Solution:
+    def findDuplicate(self, nums: List[int]) -> int:
+        setter = set()
+        
+        for i in nums:
+            if i in setter:
+                return i
+            else:
+                setter.add(i)
+              
+              
+ Brute Force 2:            
+ Without using space complexity i.e. atmost space complexity as O(1) and also the array is modified
+ class Solution:
+    def findDuplicate(self, nums: List[int]) -> int:
+        nums.sort()
+        
+        for i in range(len(nums)-1):
+            if nums[i] == nums[i+1]:
+                return nums[i]
+                
+ Optimized: Assume it as linked list(Just assume we are not going to convert it into LL) and hence whenever we see a duplicate element we consider it as a cycle
+ Slow and Fast Pointer
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
