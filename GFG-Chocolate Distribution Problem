@@ -1,1 +1,17 @@
 Chocolate Distribution Problem
+
+class Solution:
+
+    def findMinDiff(self, A,N,M):
+
+        # code here
+        A.sort()
+        i = 0
+        j = M-1
+        diff = 100000
+        for i in range(N):
+            if j<N:
+                newdiff = A[j]-A[i]
+                diff = min(diff,newdiff)
+                j += 1
+        return diff
