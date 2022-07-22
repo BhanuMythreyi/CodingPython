@@ -15,7 +15,7 @@ class Solution:
         else:
             return -1
             
-# General Method
+# General Method: BruteForce Approach
 
 class Solution:
     def strStr(self, haystack: str, needle: str) -> int:
@@ -25,3 +25,5 @@ class Solution:
             if haystack[i:i+len(needle)] == needle:
                 return i
         return -1
+
+# Optimized Approach:
