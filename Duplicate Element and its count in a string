@@ -1,0 +1,23 @@
+Duplicate Element and its count in a string
+
+def Dupli(s):
+  hashmap = {}
+  for i in range(len(s)):
+    if s[i] in hashmap:
+      hashmap[s[i]] += 1
+    else:
+      hashmap[s[i]] = 1
+  count = 0
+  for i in hashmap:
+    if hashmap[i]>1:
+      print(i,":",hashmap[i])
+      count += 1
+  if count == 0:
+    print("No element is repeated")
+
+st1 = "abba"
+st2 = "abc"
+print("For string 1: ",st1)
+Dupli(st1)
+print("For string 2: ",st2)
+Dupli(st2)
