@@ -1,11 +1,26 @@
 1290. Convert Binary Number in a Linked List to Integer
 
-Solution:
+One Solution:
 
 class Solution:
     def getDecimalValue(self, head: ListNode) -> int:
         ans = 0
         while head is not None:
             ans = (ans*2)+(head.val)
+            head = head.next
+        return ans
+
+Second Optimized Approach:
+# Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
+class Solution:
+    def getDecimalValue(self, head: ListNode) -> int:
+        ans = 0
+        while head is not None:
+            # Do a left shift for the ans and then "OR" it with the next value in the seqeunce
+            ans = (ans << 1) | head.val
             head = head.next
         return ans
