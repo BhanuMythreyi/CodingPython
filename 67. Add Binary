@@ -1,0 +1,10 @@
+67. Add Binary
+
+class Solution:
+    def addBinary(self, a: str, b: str) -> str:
+        DecA = int(a,2)
+        DecB = int(b,2)
+        
+        summer = DecA+DecB
+        binSum = bin(summer).replace("0b","")
+        return binSum
