@@ -1,0 +1,68 @@
+Recursion -------- Two Conditions
+(i) Base Case
+(ii) The other case which in turn calls base case after few turns
+
+It could be solved in PMI i.e. Principle of Mathematical Induction
+Base Case: the function will be true for 0 and 1 i.e. f(0) or/and f(1) mostly
+And then we assume it to be true for f(k+1) {The second condition i.e. apart from base case}
+
+Basic Problems involving recursion:
+
+Ideally any problem can be solved using recursion(conditions applied), like binary search or linear search etc but in this particular file in repo this only contains basic recursion problems
+1.Power Problem: finding a number x powered to n
+
+def power(x,n):
+  if n<1:
+    return x*power(x,n-1)
+  else:
+    return 1
+    
+2.Fibonacci Series:
+
+def fib(n):
+  if n<=1:
+    return n
+  else:
+    return fib(n-1)+fib(n-2)
+    
+3.Printing Contents in an array:
+
+def printArray(arr,size,i):
+  if i == size:
+    return 
+  print(arr[i],"")
+  printArray(arr,size,i+1)
+  
+  4.First Occurance of an element
+  
+  def findFirstOccurance(arr,size,i,val):
+  if i == size:
+    return
+  if arr[i] == val:
+    print(i)
+    i = size-1
+  findFirstOccurance(arr,size,i+1,val)
+arr = [2,6,8,5,7,9]
+findFirstOccurance(arr,len(arr),0,5)
+
+5.Print Array in Reverse
+
+def printArrayInReverse(arr,size,i):
+  if i == size:
+    return 
+  printArrayInReverse(arr,size,i+1)
+  print(arr[i],"")
+arr = [2,6,8,5,7,5,9]
+printArrayInReverse(arr,len(arr),0)
+
+6.Last Occurance of an element
+
+def findLastOccurance(arr,i,val):
+  if i == 0:
+    return
+  if arr[i] == val:
+    print(i)
+    i = 1
+  findLastOccurance(arr,i-1,val)
+arr = [2,6,8,5,7,5,9]
+findLastOccurance(arr,len(arr)-1,5)
