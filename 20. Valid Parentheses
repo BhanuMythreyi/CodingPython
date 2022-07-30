@@ -1,5 +1,7 @@
 20. Valid Parentheses
 
+Approach one:
+
 class Solution:
     def isValid(self, s: str) -> bool:
         stack = []
@@ -17,3 +19,25 @@ class Solution:
             return True
         else:
             return False
+
+Approach Two:
+
+from collections import deque
+class Solution:
+    def isValid(self, s: str) -> bool:
+        stack = deque()
+        for i in range(len(s)):
+            if s[i] == "(" or s[i] == "{" or s[i] == "[":
+                stack.append(s[i])
+            else:
+                if len(stack) == 0:
+                    return False
+                elif self.checkpair(stack[-1],s[i]):
+                    stack.pop()
+                    continue
+                return False
+        if len(stack) != 0:
+            return False
+        return True
+    def checkpair(self,val1,val2):
+        return ( (val1 == "(" and val2 == ")") or (val1 == "{" and val2 == "}") or (val1 == "[" and val2 == "]"))
