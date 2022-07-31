@@ -22,6 +22,7 @@ class StockSpanner:
 Same problem can be done using a function as shown below:
 
 Approach 1:
+
 def Span(arr):
   s = []
   for i in range(len(arr)-1,-1,-1):
@@ -36,7 +37,24 @@ def Span(arr):
 
 arr = [100,80,60,70,60,75,85]
 output = Span(arr)
+print(output)
 
 Approach:2
 
-print(output)
+from collections import deque
+
+def StockSpan(arr):
+  stack = deque()
+  stack.append(0)
+  print(1,end=" ")
+
+  for i in range(1,len(arr)):
+    while len(stack) != 0 and arr[stack[-1]]<arr[i]:
+      stack.pop()
+    if len(stack) == 0:
+      print(i+1,end=" ")
+    else:
+      print(i-stack[-1],end=" ")
+    stack.append(i)
+arr = [100,80,60,70,60,75,85]
+StockSpan(arr)
