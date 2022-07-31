@@ -1,0 +1,88 @@
+Next Greater Element
+
+Naive Approach(Approach - 1):
+
+from collections import deque
+def NextGreater(arr):
+  stack = deque()
+
+  for i in range(len(arr)):
+    flag = False
+    for j in range(i,len(arr)):
+      if arr[j]>arr[i]:
+        stack.append(arr[j])
+        flag = True
+        break
+    if flag == False:
+      stack.append(-1)
+  return stack
+arr = [30,20,50,15,25]
+output = NextGreater(arr)
+print(output)
+
+Approach 2:
+
+from collections import deque
+def NextGreater(arr):
+  stack = deque()
+
+  for i in range(len(arr)):
+    flag = False
+    j = i+1
+    while j<len(arr): 
+      if arr[j]>arr[i]:
+        stack.append(arr[j])
+        flag = True
+        break
+      j += 1
+    if flag == False:
+      stack.append(-1)
+  return stack
+arr = [30,20,50,15,25]
+output = NextGreater(arr)
+print(output)
+
+Approach 3:
+
+from collections import deque
+def NextGreater(arr):
+  stack = deque()
+  stack2 =deque()
+
+  for i in range(len(arr)):
+    flag = False
+    j = len(arr)-1
+    while j>i:
+      if arr[j]>arr[i]:
+        stack.append(arr[j])
+        flag = True
+      j -= 1
+    if flag == False:
+      stack.append(-1)
+    stack2.append(stack.pop())
+  return stack2
+arr = [30,20,50,15,25]
+output = NextGreater(arr)
+print(output)
+
+Optimized Approach (Approach - 4):
+
+from collections import deque
+def NextGreater(arr, size):
+    stack = deque()
+    list = []
+    stack.append(arr[size - 1])
+    list.append("-")
+    for i in range(size-2, -1, -1):
+        while len(stack) > 0 and stack[-1] <= arr[i]:
+            stack.pop()
+        if len(stack) == 0:
+            list.append("-")
+        else:
+            list.append(stack[-1])
+        stack.append(arr[i])
+    list.reverse()
+    print(" ".join(str(x) for x in list))
+# Driver code
+arr = [30, 50, 20, 15, 25]
+NextGreater(arr, len(arr))
