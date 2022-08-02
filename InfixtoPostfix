@@ -1,0 +1,49 @@
+InfixtoPostfix
+
+def checkifoperand(ele):
+  return ele.isalpha()
+
+def precedence(ch,stack_top):
+  prec = {'+':1,'-':1,'/':2,'*':2,'^':3}
+  # higher value corresonds to higher precedence
+  try:
+    a = prec[ch]
+    b = prec[stack_top]
+    if a<=b:
+      return True
+    else:
+      return False
+  except:
+    return False
+
+def ConvertInfixtoPostfix(infixexpr):
+  stack = []
+  postfix = []
+
+  for i in range(len(infixexpr)):
+    if checkifoperand(infixexpr[i]):
+      postfix.append(infixexpr[i])
+
+    elif infixexpr[i] == '(':
+      stack.append(infixexpr[i])
+      
+    elif infixexpr[i] == ')':
+      while len(stack)>0 and stack[-1] != '(':
+        postfix.append(stack.pop())
+
+      if len(stack)>0 and stack[-1] != '(':
+        return 
+      else:
+        stack.pop()
+    else:
+      while len(stack)>0 and precedence(infixexpr[i],stack[-1]):
+        postfix.append(stack.pop())
+
+      stack.append(infixexpr[i])
+  while len(stack)>0:
+    postfix.append(stack.pop())
+
+  print("".join(x for x in postfix))
+
+infixexpr = "a+b*(c^d-e)^(f+g*h)-i"
+ConvertInfixtoPostfix(infixexpr)
