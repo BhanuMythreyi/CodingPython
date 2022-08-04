@@ -1,4 +1,4 @@
-InfixtoPrefix
+InfixToPrefix
 
 def checkIfOperand(c):
     return c.isalpha()
