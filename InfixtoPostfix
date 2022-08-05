@@ -1,4 +1,4 @@
-InfixtoPostfix
+InfixToPostfix
 
 def checkifoperand(ele):
   return ele.isalpha()
