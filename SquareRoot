@@ -1,6 +1,5 @@
 def Squareroot(n):
   x = n
-  root = 0
   while True:
     root = (0.5)*(x+(n/x))
     if(abs(root-x)<0.1): # the error that can be allowed is 0.1
