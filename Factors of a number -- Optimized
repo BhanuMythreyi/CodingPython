@@ -1,0 +1,12 @@
+def Factors(n):
+  temp = []
+  for i in range(1,int((n**0.5))+1):
+    if(n%i==0):
+      if(n//i == i):
+        print(i,end=" ")
+      else:
+        print(i,end=" ")
+        temp.append(n//i)
+  for i in range(len(temp)-1,-1,-1):
+    print(temp[i],end=" ")
+Factors(60)
